@@ -1,0 +1,26 @@
+{
+  "name": "tailwindcss-padding-safe",
+  "version": "1.0.4",
+  "description": "Tailwind CSS plugin to generate padding utilities with safe-area-inset.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/desaintflorent/tailwindcss-padding-safe.git"
+  },
+  "keywords": [
+    "tailwindcss",
+    "padding",
+    "safe-area-inset",
+    "tailwind",
+    "notch"
+  ],
+  "author": "Thibaut De Saint Florent <thibaut@biiiim.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/desaintflorent/tailwindcss-padding-safe/issues"
+  },
+  "homepage": "https://github.com/desaintflorent/tailwindcss-padding-safe#readme"
+}
