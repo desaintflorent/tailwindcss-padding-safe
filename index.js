@@ -25,15 +25,15 @@ module.exports = function () {
 
         (size, modifier) => ({
           '@supports(padding: max(0px))': {
-            [`.${e(`p-${modifier}-${suffix}`)}`]: { 'padding-top': `max(${size}, env(safe-area-inset-top))`, 'padding-bottom': `max(${size}, env(safe-area-inset-bottom))` , 'padding-left': `max(${size}, env(safe-area-inset-left))` , 'padding-right': `max(${size}, env(safe-area-inset-right))` },
+            [`.${e(`p-${modifier}-${suffix}`)}`]: { 'padding-top': `max(${size} * 1px, env(safe-area-inset-top))`, 'padding-bottom': `max(${size} * 1px, env(safe-area-inset-bottom))` , 'padding-left': `max(${size} * 1px, env(safe-area-inset-left))` , 'padding-right': `max(${size} * 1px, env(safe-area-inset-right))` },
 
-            [`.${e(`py-${modifier}-${suffix}`)}`]: { 'padding-top': `max(${size}, env(safe-area-inset-top))`, 'padding-bottom': `max(${size}, env(safe-area-inset-bottom))` },
-            [`.${e(`px-${modifier}-${suffix}`)}`]: { 'padding-left': `max(${size}, env(safe-area-inset-left))`, 'padding-right': `max(${size}, env(safe-area-inset-right))` },
+            [`.${e(`py-${modifier}-${suffix}`)}`]: { 'padding-top': `max(${size} * 1px, env(safe-area-inset-top))`, 'padding-bottom': `max(${size} * 1px, env(safe-area-inset-bottom))` },
+            [`.${e(`px-${modifier}-${suffix}`)}`]: { 'padding-left': `max(${size} * 1px, env(safe-area-inset-left))`, 'padding-right': `max(${size} * 1px, env(safe-area-inset-right))` },
 
-            [`.${e(`pt-${modifier}-${suffix}`)}`]: { 'padding-top': `max(${size}, env(safe-area-inset-top))` },
-            [`.${e(`pr-${modifier}-${suffix}`)}`]: { 'padding-right': `max(${size}, env(safe-area-inset-right))` },
-            [`.${e(`pb-${modifier}-${suffix}`)}`]: { 'padding-bottom': `max(${size}, env(safe-area-inset-bottom))` },
-            [`.${e(`pl-${modifier}-${suffix}`)}`]: { 'padding-left': `max(${size}, env(safe-area-inset-left))` },
+            [`.${e(`pt-${modifier}-${suffix}`)}`]: { 'padding-top': `max(${size} * 1px, env(safe-area-inset-top))` },
+            [`.${e(`pr-${modifier}-${suffix}`)}`]: { 'padding-right': `max(${size} * 1px, env(safe-area-inset-right))` },
+            [`.${e(`pb-${modifier}-${suffix}`)}`]: { 'padding-bottom': `max(${size} * 1px, env(safe-area-inset-bottom))` },
+            [`.${e(`pl-${modifier}-${suffix}`)}`]: { 'padding-left': `max(${size} * 1px, env(safe-area-inset-left))` },
           }
         }),
       ]
