@@ -10,30 +10,30 @@ module.exports = function () {
 
       const generators = [
         (size, modifier) => (onlySupportsRules ? null : {
-          [`.${e(`p-${modifier}-${suffix}`)}`]: { 'margin': `${size}` },
+          [`.${e(`m-${modifier}-${suffix}`)}`]: { 'margin': `${size}` },
         }),
         (size, modifier) => (onlySupportsRules ? null : {
-          [`.${e(`py-${modifier}-${suffix}`)}`]: { 'margin-top': `${size}`, 'margin-bottom': `${size}` },
-          [`.${e(`px-${modifier}-${suffix}`)}`]: { 'margin-left': `${size}`, 'margin-right': `${size}` },
+          [`.${e(`my-${modifier}-${suffix}`)}`]: { 'margin-top': `${size}`, 'margin-bottom': `${size}` },
+          [`.${e(`mx-${modifier}-${suffix}`)}`]: { 'margin-left': `${size}`, 'margin-right': `${size}` },
         }),
         (size, modifier) => (onlySupportsRules ? null : {
-          [`.${e(`pt-${modifier}-${suffix}`)}`]: { 'margin-top': `${size}` },
-          [`.${e(`pr-${modifier}-${suffix}`)}`]: { 'margin-right': `${size}` },
-          [`.${e(`pb-${modifier}-${suffix}`)}`]: { 'margin-bottom': `${size}` },
-          [`.${e(`pl-${modifier}-${suffix}`)}`]: { 'margin-left': `${size}` },
+          [`.${e(`mt-${modifier}-${suffix}`)}`]: { 'margin-top': `${size}` },
+          [`.${e(`mr-${modifier}-${suffix}`)}`]: { 'margin-right': `${size}` },
+          [`.${e(`mb-${modifier}-${suffix}`)}`]: { 'margin-bottom': `${size}` },
+          [`.${e(`ml-${modifier}-${suffix}`)}`]: { 'margin-left': `${size}` },
         }),
 
         (size, modifier) => ({
           '@supports(margin: max(0px))': {
-            [`.${e(`p-${modifier}-${suffix}`)}`]: { 'margin-top': `max(${size}, env(safe-area-inset-top))`, 'margin-bottom': `max(${size}, env(safe-area-inset-bottom))` , 'padding-left': `max(${size}, env(safe-area-inset-left))` , 'padding-right': `max(${size}, env(safe-area-inset-right))` },
+            [`.${e(`m-${modifier}-${suffix}`)}`]: { 'margin-top': `max(${size}, env(safe-area-inset-top))`, 'margin-bottom': `max(${size}, env(safe-area-inset-bottom))` , 'margin-left': `max(${size}, env(safe-area-inset-left))` , 'margin-right': `max(${size}, env(safe-area-inset-right))` },
 
-            [`.${e(`py-${modifier}-${suffix}`)}`]: { 'margin-top': `max(${size}, env(safe-area-inset-top))`, 'margin-bottom': `max(${size}, env(safe-area-inset-bottom))` },
-            [`.${e(`px-${modifier}-${suffix}`)}`]: { 'margin-left': `max(${size}, env(safe-area-inset-left))`, 'margin-right': `max(${size}, env(safe-area-inset-right))` },
+            [`.${e(`my-${modifier}-${suffix}`)}`]: { 'margin-top': `max(${size}, env(safe-area-inset-top))`, 'margin-bottom': `max(${size}, env(safe-area-inset-bottom))` },
+            [`.${e(`mx-${modifier}-${suffix}`)}`]: { 'margin-left': `max(${size}, env(safe-area-inset-left))`, 'margin-right': `max(${size}, env(safe-area-inset-right))` },
 
-            [`.${e(`pt-${modifier}-${suffix}`)}`]: { 'margin-top': `max(${size}, env(safe-area-inset-top))` },
-            [`.${e(`pr-${modifier}-${suffix}`)}`]: { 'margin-right': `max(${size}, env(safe-area-inset-right))` },
-            [`.${e(`pb-${modifier}-${suffix}`)}`]: { 'margin-bottom': `max(${size}, env(safe-area-inset-bottom))` },
-            [`.${e(`pl-${modifier}-${suffix}`)}`]: { 'margin-left': `max(${size}, env(safe-area-inset-left))` },
+            [`.${e(`mt-${modifier}-${suffix}`)}`]: { 'margin-top': `max(${size}, env(safe-area-inset-top))` },
+            [`.${e(`mr-${modifier}-${suffix}`)}`]: { 'margin-right': `max(${size}, env(safe-area-inset-right))` },
+            [`.${e(`mb-${modifier}-${suffix}`)}`]: { 'margin-bottom': `max(${size}, env(safe-area-inset-bottom))` },
+            [`.${e(`ml-${modifier}-${suffix}`)}`]: { 'margin-left': `max(${size}, env(safe-area-inset-left))` },
           }
         }),
       ]
