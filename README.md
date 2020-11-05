@@ -1,12 +1,13 @@
-# Tailwind CSS Padding Safe Plugin
+# Tailwind CSS Margin Safe Plugin
 
-This plugin is based on the [tailwindcss](https://github.com/tailwindcss/tailwindcss/tree/v1.0.0-beta.4) framework. Usage is similar to the core padding plugin, but outputs `px-[value]-safe` padding, instead of `px-[value]`.
-This is my first package so don't hesitate to point me on any improvement or issue.
+This plugin is based on the [tailwindcss](https://github.com/tailwindcss/tailwindcss/tree/v1.0.0-beta.4) framework. Usage is similar to the core margin plugin, but outputs `mx-[value]-safe` margin, instead of `mx-[value]`.
+
+This packaged is an edited fork from the excellent work at https://github.com/desaintflorent/tailwindcss-padding-safe
 
 ## Installation
 
 ```bash
-npm install tailwindcss-padding-safe
+npm install tailwindcss-margin-safe
 ```
 
 ## Usage
@@ -14,81 +15,81 @@ npm install tailwindcss-padding-safe
 ```js
 // In your Tailwind JS config
 {
-	plugins: [require("tailwindcss-padding-safe")()]
+	plugins: [require("tailwindcss-margin-safe")()]
 }
 ```
 
 This plugin generates the following utilities:
 
 ```css
-/* Default rules for browser without max() support same as core padding generated rules */
+/* Default rules for browser without max() support same as core margin generated rules */
 
-.p-[value]-safe {
-	padding: [value]rem;
+.m-[value]-safe {
+	margin: [value]rem;
 }
-.py-[value]-safe {
-	padding-top: [value]rem;
-	padding-bottom: [value]rem;
+.my-[value]-safe {
+	margin-top: [value]rem;
+	margin-bottom: [value]rem;
 }
-.px-[value]-safe {
-	padding-left: [value]rem;
-	padding-right: [value]rem;
+.mx-[value]-safe {
+	margin-left: [value]rem;
+	margin-right: [value]rem;
 }
-.pt-[value]-safe {
-	padding-top: [value]rem;
+.mt-[value]-safe {
+	margin-top: [value]rem;
 }
-.pb-[value]-safe {
-	padding-bottom: [value]rem;
+.mb-[value]-safe {
+	margin-bottom: [value]rem;
 }
-.pl-[value]-safe {
-	padding-left: [value]rem;
+.ml-[value]-safe {
+	margin-left: [value]rem;
 }
-.pr-[value]-safe {
-	padding-right: [value]rem;
+.mr-[value]-safe {
+	margin-right: [value]rem;
 }
 
 /* Safe area rules for browser with max() support */
 
-@supports (padding: max(0px)) {
+@supports (margin: max(0px)) {
 	.p-[value]-safe {
-		padding-top: max([value]rem, env(safe-area-inset-top));
-		padding-bottom: max([value]rem, env(safe-area-inset-bottom));
-		padding-left: max([value]rem, env(safe-area-inset-left));
-		padding-right: max([value]rem, env(safe-area-inset-right));
+		margin-top: max([value]rem, env(safe-area-inset-top));
+		margin-bottom: max([value]rem, env(safe-area-inset-bottom));
+		margin-left: max([value]rem, env(safe-area-inset-left));
+		margin-right: max([value]rem, env(safe-area-inset-right));
 	}
 	.py-[value]-safe {
-		padding-top: max([value]rem, env(safe-area-inset-top));
-		padding-bottom: max([value]rem, env(safe-area-inset-bottom));
+		margin-top: max([value]rem, env(safe-area-inset-top));
+		margin-bottom: max([value]rem, env(safe-area-inset-bottom));
 	}
 	.px-[value]-safe {
-		padding-left: max([value]rem, env(safe-area-inset-left));
-		padding-right: max([value]rem, env(safe-area-inset-right));
+		margin-left: max([value]rem, env(safe-area-inset-left));
+		margin-right: max([value]rem, env(safe-area-inset-right));
 	}
 	.pt-[value]-safe {
-		padding-top: max([value]rem, env(safe-area-inset-top));
+		margin-top: max([value]rem, env(safe-area-inset-top));
 	}
 	.pb-[value]-safe {
-		padding-bottom: max([value]rem, env(safe-area-inset-bottom));
+		margin-bottom: max([value]rem, env(safe-area-inset-bottom));
 	}
 	.pl-[value]-safe {
-		padding-left: max([value]rem, env(safe-area-inset-left));
+		margin-left: max([value]rem, env(safe-area-inset-left));
 	}
 	.pr-[value]-safe {
-		padding-right: max([value]rem, env(safe-area-inset-right));
+		margin-right: max([value]rem, env(safe-area-inset-right));
 	}
 }
 ```
 
 ## Options
 
-It's working out of the box with your current padding options ! ( Pro tip : use purgecss )
+It's working out of the box with your current margin options ! ( Pro tip : use purgecss )
 But if you need, you can set options in your tailwindcss.js like this :
 
 ```js
 // In your Tailwind CSS config
 theme: {
-    paddingSafe:{
-      padding: {
+    marginSafe:{
+      margin: {
         '1': '1rem',
       },
       suffix: {
@@ -98,14 +99,14 @@ theme: {
     },
 },
 variants: {
-  paddingSafe: [ 'responsive' ],
+  marginSafe: [ 'responsive' ],
 },
 ```
 
-`theme.paddingSafe.padding` is optional and it defaults to theme.padding
-`theme.paddingSafe.suffix` is optional and it defaults to "safe"
-`theme.paddingSafe.onlySupportsRules` is optional and it defaults to false
-`variants.paddingSafe` is optional and it defaults to variants.padding
+`theme.marginSafe.margin` is optional and it defaults to theme.margin
+`theme.marginSafe.suffix` is optional and it defaults to "safe"
+`theme.marginSafe.onlySupportsRules` is optional and it defaults to false
+`variants.marginSafe` is optional and it defaults to variants.margin
 
 Use it in your html like this :
 
@@ -113,7 +114,7 @@ Use it in your html like this :
 <div class="pt-1-safe">Example of block</div>
 ```
 
-If you don't want to generate default rules for browser without support for `max()`, you can set the `onlySupportsRules` option to `true`. But then, you will not get any padding for browser without support, so you should add default core padding too :
+If you don't want to generate default rules for browser without support for `max()`, you can set the `onlySupportsRules` option to `true`. But then, you will not get any margin for browser without support, so you should add default core margin too :
 
 ```html
 <div class="pt-1 pt-1-safe">Example of block</div>
