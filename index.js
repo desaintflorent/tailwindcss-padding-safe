@@ -1,4 +1,4 @@
-const _ = require('lodash')
+const { flatMap } = require('lodash');
 
 module.exports = function () {
   return function({ addUtilities, e, config }) {
