@@ -19,6 +19,7 @@ npm install -D tailwindcss-padding-safe
 ```
 
 This plugin generates the following utilities:
++ the same with `m` prefix for margin
 
 ```css
 /* Default rules for browser without max() support same as core padding generated rules */
