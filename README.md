@@ -6,7 +6,7 @@ This is my first package so don't hesitate to point me on any improvement or iss
 ## Installation
 
 ```bash
-npm install tailwindcss-padding-safe
+npm install -D tailwindcss-padding-safe
 ```
 
 ## Usage
