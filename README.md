@@ -14,7 +14,7 @@ npm install tailwindcss-padding-safe
 ```js
 // In your Tailwind JS config
 {
-	plugins: [require("tailwindcss-padding-safe")()]
+	plugins: [require("tailwindcss-padding-safe")]
 }
 ```
 
