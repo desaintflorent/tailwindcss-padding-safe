@@ -6,7 +6,7 @@ This is my first package so don't hesitate to point me on any improvement or iss
 ## Installation
 
 ```bash
-npm install tailwindcss-padding-safe
+npm install -D tailwindcss-padding-safe
 ```
 
 ## Usage
@@ -14,11 +14,12 @@ npm install tailwindcss-padding-safe
 ```js
 // In your Tailwind JS config
 {
-	plugins: [require("tailwindcss-padding-safe")()]
+	plugins: [require("tailwindcss-padding-safe")]
 }
 ```
 
 This plugin generates the following utilities:
++ the same with `m` prefix for margin
 
 ```css
 /* Default rules for browser without max() support same as core padding generated rules */
