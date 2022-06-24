@@ -22,5 +22,8 @@
 	"bugs": {
 		"url": "https://github.com/desaintflorent/tailwindcss-padding-safe/issues"
 	},
-	"homepage": "https://github.com/desaintflorent/tailwindcss-padding-safe#readme"
+	"homepage": "https://github.com/desaintflorent/tailwindcss-padding-safe#readme",
+	"dependencies": {
+		"lodash": "^4.17.21"
+	}
 }
