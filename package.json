@@ -1,6 +1,6 @@
 {
 	"name": "tailwindcss-padding-safe",
-	"version": "1.0.5",
+	"version": "1.0.6",
 	"description": "Tailwind CSS plugin to generate padding utilities with safe-area-inset.",
 	"main": "index.js",
 	"scripts": {
