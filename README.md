@@ -1,7 +1,6 @@
 # Tailwind CSS Padding Safe Plugin
 
-This plugin is based on the [tailwindcss](https://github.com/tailwindcss/tailwindcss/tree/v1.0.0-beta.4) framework. Usage is similar to the core padding plugin, but outputs `px-[value]-safe` padding, instead of `px-[value]`.
-This is my first package so don't hesitate to point me on any improvement or issue.
+Tailwind CSS v4 plugin that generates padding and margin utilities with `safe-area-inset` support for notched devices (iPhones, etc.).
 
 ## Installation
 
@@ -11,125 +10,90 @@ npm install -D tailwindcss-padding-safe
 
 ## Usage
 
-```js
-// In your Tailwind JS config
-{
-	plugins: [require("tailwindcss-padding-safe")]
-}
-```
-
-This plugin generates the following utilities:
-+ the same with `m` prefix for margin
+Add the plugin to your CSS file:
 
 ```css
-/* Default rules for browser without max() support same as core padding generated rules */
-
-.p-[value]-safe {
-	padding: [value]rem;
-}
-.py-[value]-safe {
-	padding-top: [value]rem;
-	padding-bottom: [value]rem;
-}
-.px-[value]-safe {
-	padding-left: [value]rem;
-	padding-right: [value]rem;
-}
-.pt-[value]-safe {
-	padding-top: [value]rem;
-}
-.pb-[value]-safe {
-	padding-bottom: [value]rem;
-}
-.pl-[value]-safe {
-	padding-left: [value]rem;
-}
-.pr-[value]-safe {
-	padding-right: [value]rem;
-}
-
-/* Safe area rules for browser with max() support */
-
-@supports (padding: max(0px)) {
-	.p-[value]-safe {
-		padding-top: max([value]rem, env(safe-area-inset-top));
-		padding-bottom: max([value]rem, env(safe-area-inset-bottom));
-		padding-left: max([value]rem, env(safe-area-inset-left));
-		padding-right: max([value]rem, env(safe-area-inset-right));
-	}
-	.py-[value]-safe {
-		padding-top: max([value]rem, env(safe-area-inset-top));
-		padding-bottom: max([value]rem, env(safe-area-inset-bottom));
-	}
-	.px-[value]-safe {
-		padding-left: max([value]rem, env(safe-area-inset-left));
-		padding-right: max([value]rem, env(safe-area-inset-right));
-	}
-	.pt-[value]-safe {
-		padding-top: max([value]rem, env(safe-area-inset-top));
-	}
-	.pb-[value]-safe {
-		padding-bottom: max([value]rem, env(safe-area-inset-bottom));
-	}
-	.pl-[value]-safe {
-		padding-left: max([value]rem, env(safe-area-inset-left));
-	}
-	.pr-[value]-safe {
-		padding-right: max([value]rem, env(safe-area-inset-right));
-	}
-}
+@import "tailwindcss";
+@plugin "tailwindcss-padding-safe";
 ```
 
-## Options
-
-It's working out of the box with your current padding options ! ( Pro tip : use purgecss )
-But if you need, you can set options in your tailwindcss.js like this :
-
-```js
-// In your Tailwind CSS config
-theme: {
-    paddingSafe:{
-      padding: {
-        '1': '1rem',
-      },
-      suffix: {
-        'notch'
-      },
-      onlySupportsRules : true
-    },
-},
-variants: {
-  paddingSafe: [ 'responsive' ],
-},
-```
-
-`theme.paddingSafe.padding` is optional and it defaults to theme.padding
-`theme.paddingSafe.suffix` is optional and it defaults to "safe"
-`theme.paddingSafe.onlySupportsRules` is optional and it defaults to false
-`variants.paddingSafe` is optional and it defaults to variants.padding
-
-Use it in your html like this :
+Then use the utilities in your HTML:
 
 ```html
-<div class="pt-1-safe">Example of block</div>
+<!-- Safe area only (no minimum padding) -->
+<div class="p-safe">Full safe area padding</div>
+<div class="pt-safe">Safe area top only</div>
+
+<!-- Safe area with minimum padding value -->
+<div class="p-safe-4">At least 1rem padding, or safe area if larger</div>
+<div class="pt-safe-8">At least 2rem top padding, or safe area if larger</div>
+
+<!-- Arbitrary values -->
+<div class="px-safe-[20px]">Custom safe horizontal padding</div>
+
+<!-- With variants -->
+<div class="md:p-safe-4 hover:p-safe-8">Responsive and interactive</div>
 ```
 
-If you don't want to generate default rules for browser without support for `max()`, you can set the `onlySupportsRules` option to `true`. But then, you will not get any padding for browser without support, so you should add default core padding too :
+## Generated CSS
 
-```html
-<div class="pt-1 pt-1-safe">Example of block</div>
+The plugin uses `max()` to ensure padding/margin is at least the specified value or the device safe area inset, whichever is larger.
+
+```css
+/* p-safe (no minimum, just the safe area) */
+.p-safe {
+    padding-top: max(0px, env(safe-area-inset-top));
+    padding-bottom: max(0px, env(safe-area-inset-bottom));
+    padding-left: max(0px, env(safe-area-inset-left));
+    padding-right: max(0px, env(safe-area-inset-right));
+}
+
+/* p-safe-4 (at least 1rem, or safe area if larger) */
+.p-safe-4 {
+    padding-top: max(1rem, env(safe-area-inset-top));
+    padding-bottom: max(1rem, env(safe-area-inset-bottom));
+    padding-left: max(1rem, env(safe-area-inset-left));
+    padding-right: max(1rem, env(safe-area-inset-right));
+}
 ```
 
-## Warning
+## Available Utilities
 
-Unitless values inside max() are considered invalid. So if you define custom value in your theme option, keep in mind that you need to use a unit with your value like this :
+### Padding
 
-```
-   '1': '1rem', //not '1': '1'
-```
+| Class | Description |
+|---|---|
+| `p-safe-{value}` | All sides |
+| `px-safe-{value}` | Left and right |
+| `py-safe-{value}` | Top and bottom |
+| `pt-safe-{value}` | Top |
+| `pr-safe-{value}` | Right |
+| `pb-safe-{value}` | Bottom |
+| `pl-safe-{value}` | Left |
 
-Or
+### Margin
 
-```
-   '0': '0px', //not '0': '0'
-```
+| Class | Description |
+|---|---|
+| `m-safe-{value}` | All sides |
+| `mx-safe-{value}` | Left and right |
+| `my-safe-{value}` | Top and bottom |
+| `mt-safe-{value}` | Top |
+| `mr-safe-{value}` | Right |
+| `mb-safe-{value}` | Bottom |
+| `ml-safe-{value}` | Left |
+
+All utilities accept any value from your spacing theme, plus arbitrary values via bracket notation (e.g., `p-safe-[20px]`). Omit the value (e.g., `p-safe`) to use only the safe area inset with no minimum.
+
+All Tailwind CSS v4 variants (responsive, hover, focus, etc.) work automatically.
+
+## Migrating from v1.x
+
+This is a breaking upgrade for Tailwind CSS v4. Key changes:
+
+- **Class names changed**: `p-4-safe` is now `p-safe-4` (value moves to the end)
+- **Plugin registration**: Use `@plugin` in CSS instead of `plugins: [require(...)]` in JS config
+- **No more `@supports` fallback**: v4 targets modern browsers that all support `max()`
+- **No more custom config options**: `suffix`, `onlySupportsRules`, and `variants` options are removed
+- **Arbitrary value support**: Use bracket notation like `p-safe-[20px]`
+- **lodash removed**: No external dependencies

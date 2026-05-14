@@ -1,7 +1,7 @@
 {
 	"name": "tailwindcss-padding-safe",
-	"version": "1.0.6",
-	"description": "Tailwind CSS plugin to generate padding utilities with safe-area-inset.",
+	"version": "2.0.0",
+	"description": "Tailwind CSS plugin to generate padding and margin utilities with safe-area-inset.",
 	"main": "index.js",
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1"
@@ -12,7 +12,9 @@
 	},
 	"keywords": [
 		"tailwindcss",
+		"tailwindcss-v4",
 		"padding",
+		"margin",
 		"safe-area-inset",
 		"tailwind",
 		"notch"
@@ -23,7 +25,7 @@
 		"url": "https://github.com/desaintflorent/tailwindcss-padding-safe/issues"
 	},
 	"homepage": "https://github.com/desaintflorent/tailwindcss-padding-safe#readme",
-	"dependencies": {
-		"lodash": "^4.17.21"
+	"peerDependencies": {
+		"tailwindcss": ">=4.0.0"
 	}
 }
